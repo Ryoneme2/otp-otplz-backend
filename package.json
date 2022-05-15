@@ -1,0 +1,48 @@
+{
+  "name": "otplz-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ryoneme2/otp-otplz-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "3.11.1",
+    "@prisma/engines": "^3.12.0-31.ae010d3ee58f28c22599b1e5fbd1697a82240550",
+    "ajv": "^8.11.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.4",
+    "mysql": "^2.18.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/multer": "^1.4.7",
+    "@types/node": "17.0.18",
+    "@types/uuid": "^8.3.4",
+    "eslint": "^8.9.0",
+    "nodemon": "^2.0.15",
+    "prisma": "^3.11.1",
+    "ts-node": "^10.7.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "4.5.5"
+  },
+  "bugs": {
+    "url": "https://github.com/Ryoneme2/otp-otplz-backend/issues"
+  },
+  "homepage": "https://github.com/Ryoneme2/otp-otplz-backend#readme"
+}
