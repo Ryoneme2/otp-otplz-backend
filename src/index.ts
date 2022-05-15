@@ -4,7 +4,7 @@ import cors from "cors";
 dotenv.config();
 
 const app: Application = express();
-const PORT = process.env.PORTEXPRESS || 8008;
+const PORT = process.env.PORTEXPRESS || 8080;
 
 if(process.env.NODE_ENV === "production"){
     app.use(express.static(__dirname + "/client/build"));

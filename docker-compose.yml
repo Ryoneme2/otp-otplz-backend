@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  ts-node-docker:
+    environment:
+      - PRISMA_QUERY_ENGINE_BINARY=/usr/src/app/node_modules/prisma/node_modules/@prisma/engines/libquery_engine-darwin-arm64.dylib.node
+      - PRISMA_MIGRATION_ENGINE_BINARY=/usr/src/app/node_modules/prisma/node_modules/@prisma/engines/migration-engine-darwin-arm64
+      - PRISMA_INTROSPECTION_ENGINE_BINARY=/usr/src/app/node_modules/prisma/node_modules/@prisma/engines/introspection-engine-darwin-arm64
+      - PRISMA_FMT_BINARY=/usr/src/app/node_modules/prisma/node_modules/@prisma/engines/prisma-fmt-darwin-arm64
+      - PRISMA_CLI_QUERY_ENGINE_TYPE=binary
+      - PRISMA_CLIENT_ENGINE_TYPE=binary
+    platform: linux/arm64
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: base
+    depends_on:
+      - cache
+    links:
+      - cache
+    volumes:
+      - ./src:/usr/src/app/src
+      - ./nodemon.json:/usr/src/app/nodemon.json
+    container_name: otplz-backend-container
+    expose:
+      - '8080'
+    ports:
+      - '8080:8080'
+    command: yarn dev
+    networks:
+      - redis
+
+networks:
+  redis:
+    driver: bridge
+
+volumes:
+  cache:
+    driver: local
