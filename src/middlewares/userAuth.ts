@@ -9,7 +9,6 @@ export interface IGetUserAuthInfoRequest extends Request {
 
 export const auth = (req:IGetUserAuthInfoRequest, res:Response, next:NextFunction) => {
   try {
-
     if(!process.env.JWT_SECRET) {
       throw new Error('JWT_SECRET is not defined');
     }

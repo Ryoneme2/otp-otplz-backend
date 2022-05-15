@@ -8,17 +8,19 @@ generator client {
   binaryTargets = ["native", "darwin-arm64"]
 }
 
-model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  author    User?   @relation(fields: [authorId], references: [id])
-  authorId  Int?
-}
+// planTier : 1: free tier 2: Gold tier 3: Platinum tier 4: Enterprise tier
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts Post[]
+  id               Int      @id @default(autoincrement())
+  email            String   @unique
+  name             String
+  username         String   @unique
+  password         String
+  saltPassword     String
+  apiKey           String?
+  apiKeyCreateTime DateTime?
+  bankAccount      String?
+  LastUpdate       DateTime
+  role             String   @default("user")
+  planTier         Int      @default(1)
+  createdAt        DateTime @default(now())
 }
