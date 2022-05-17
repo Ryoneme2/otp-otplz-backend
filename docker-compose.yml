@@ -14,10 +14,6 @@ services:
       context: .
       dockerfile: Dockerfile
       target: base
-    depends_on:
-      - cache
-    links:
-      - cache
     volumes:
       - ./src:/usr/src/app/src
       - ./nodemon.json:/usr/src/app/nodemon.json
@@ -27,12 +23,6 @@ services:
     ports:
       - '8080:8080'
     command: yarn dev
-    networks:
-      - redis
-
-networks:
-  redis:
-    driver: bridge
 
 volumes:
   cache:

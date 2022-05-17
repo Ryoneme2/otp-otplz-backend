@@ -23,16 +23,12 @@ interface ResultGetList {
 export const addUser = async (req: Request, res: Response) => {
   const { name, email, username, password } = req.body;
 
-
   const data: UserInterface = {
     name,
     email,
     username,
     password,
   };
-
-  console.log(data);
-
 
   const result = await addUserService(data);
 
@@ -78,7 +74,6 @@ export const getOne = async (req: Request, res: Response) => {
       return
     }
 
-
     res.send({
       status: httpStatus.ok,
       data: result.data,
@@ -92,8 +87,6 @@ export const getOne = async (req: Request, res: Response) => {
       data: null,
       message: "Error on get user",
     });
-  } finally {
-    // await redisClient.disconnect();
   }
 }
 
