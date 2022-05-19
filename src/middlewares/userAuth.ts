@@ -1,11 +1,8 @@
-import jwt, { JwtPayload } from 'jsonwebtoken'
-import { Request, Response, NextFunction } from 'express'
+import jwt from 'jsonwebtoken'
+import { Response, NextFunction } from 'express'
+import { IGetUserAuthInfoRequest } from '../templates/@types'
 import dotenv from 'dotenv'
 dotenv.config()
-
-export interface IGetUserAuthInfoRequest extends Request {
-  user: string | JwtPayload
-}
 
 export const auth = (req:IGetUserAuthInfoRequest, res:Response, next:NextFunction) => {
   try {
@@ -23,7 +20,7 @@ export const auth = (req:IGetUserAuthInfoRequest, res:Response, next:NextFunctio
 
     console.log(process.env.JWT_SECRET);
     
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded  = jwt.verify(token, process.env.JWT_SECRET);
     console.log({ decoded });
     // collect user info
     req.user = decoded;
