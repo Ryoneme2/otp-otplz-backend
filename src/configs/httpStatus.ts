@@ -1,8 +1,15 @@
-interface Status<T> {
-  [index: string]: T
+interface Status {
+  ok: number,
+  created: number,
+  noContent: number,
+  badRequest: number,
+  forbidden: number,
+  notFound: number,
+  Conflict: number,
+  InternalServerError: number
 }
 
-export const httpStatus : Status<number> = {
+export const httpStatus : Status = {
   ok: 200,
   created: 201,
   noContent: 204,

@@ -138,7 +138,7 @@ export const login = async (req: Request, res: Response) => {
 
   console.log({ username, password });
   
-  const result: ResultGet = await getUserByUsername(username);
+  const result = await getUserByUsername(username);
 
   console.log({ result });
 
@@ -184,6 +184,7 @@ export const login = async (req: Request, res: Response) => {
   }
 
   const token = jwt.sign({
+    id: result.data.id,
     username: result.data.username,
     email: result.data.email,
   }, secret || "x##A7Nzam1LoIWP90Ubp8c50gi&v7@N8@HcT9TwWXiWfi" , { expiresIn: '48h' })

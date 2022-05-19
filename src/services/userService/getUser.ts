@@ -96,6 +96,8 @@ export const getUserByUsername = async (username: string) => {
           email: allUsers.email,
           username: allUsers.username,
           password: allUsers.password,
+          apiKey: allUsers.apiKey,
+          apiKeyCreateTime: allUsers.apiKeyCreateTime,
           role: allUsers.role,
           createdAt: allUsers.createdAt,
         },
