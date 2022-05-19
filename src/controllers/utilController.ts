@@ -1,11 +1,9 @@
 import { Response } from "express";
 import { IGetUserAuthInfoRequest, UserJwtPayload } from '../templates/@types'
-import { addUserService } from "../services/userService/addUser";
-import { getUser, getListUser, getUserByUsername } from "../services/userService/getUser";
+import { getUserByUsername } from "../services/userService/getUser";
 import { httpStatus } from "../configs/httpStatus";
 import { generateTokenService } from "services/tokenService/generateToken";
 import dotenv from 'dotenv'
-import { join } from "path";
 dotenv.config()
 
 export const generateToken = async (req: IGetUserAuthInfoRequest, res: Response) => {
