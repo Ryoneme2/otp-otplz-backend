@@ -16,11 +16,16 @@ export const addUserService = async (data: UserInterface) => {
     if (!valid) {
       console.log(validate.errors);
 
-      const errMsg = validate.errors?.toString()
+      const errMsg = validate.errors
+
+      const errMsgStr = errMsg?.map((el) => {
+        return el.message
+      })
+
       return {
         isSuccess: false,
-        data: null,
-        message: errMsg || "Schema validation failed",
+        data: errMsgStr,
+        message: "Schema validation failed",
       }
     }
 

@@ -35,7 +35,7 @@ export const addUser = async (req: Request, res: Response) => {
   if (!result.isSuccess) {
     res.send({
       status: httpStatus.InternalServerError,
-      data: null,
+      data: result.data,
       message: result.message,
     });
     return

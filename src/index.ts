@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 dotenv.config();
 
+import authRoute from './routes/authRoute'
+
 const app: Application = express();
 const PORT = process.env.PORTEXPRESS || 8080;
 
@@ -27,6 +29,8 @@ app.get("/", (req: Request, res: Response) => {
   console.log("Hello World22");
   res.send("Hello World5!");
 });
+
+app.use('/auth', authRoute); // login and register
 
 
 app.listen(PORT, () => {
