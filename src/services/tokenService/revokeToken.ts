@@ -4,9 +4,13 @@ const prisma = new PrismaClient();
 
 export const revokeTokenService = async (userId: number) => {
   try {
-    const res = await prisma.user.delete({
+    const res = await prisma.user.update({
       where: {
         id: userId,
+      },
+      data: {
+        apiKey: null,
+        apiKeyCreateTime: new Date(),
       }
     })
 

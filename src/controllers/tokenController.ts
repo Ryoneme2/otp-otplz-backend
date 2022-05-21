@@ -1,9 +1,9 @@
-import { revokeToken } from './tokenController';
 import { Response } from "express";
 import { IGetUserAuthInfoRequest, UserJwtPayload } from '../templates/@types'
 import { getUserByUsername } from "../services/userService/getUser";
 import { httpStatus } from "../configs/httpStatus";
-import { generateTokenService, revokeToken } from "../services/tokenService/generateToken";
+import { generateTokenService } from "../services/tokenService/generateToken";
+import { revokeTokenService } from "../services/tokenService/revokeToken";
 import dotenv from 'dotenv'
 dotenv.config()
 
