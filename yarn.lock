@@ -2113,7 +2113,7 @@ prepend-http@^2.0.0:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
   integrity sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
 
-prisma@^3.11.1:
+prisma@^3.14.0:
   version "3.14.0"
   resolved "https://registry.yarnpkg.com/prisma/-/prisma-3.14.0.tgz#dd67ece37d7b5373e9fd9588971de0024b49be81"
   integrity sha512-l9MOgNCn/paDE+i1K2fp9NZ+Du4trzPTJsGkaQHVBufTGqzoYHuNk8JfzXuIn0Gte6/ZjyKj652Jq/Lc1tp2yw==

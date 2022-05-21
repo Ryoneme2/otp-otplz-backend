@@ -39,6 +39,9 @@ export const addUserService = async (data: UserInterface) => {
 
     const resHashed = await hashString(password);
 
+    console.log({ resHashed });
+    
+
     const usr = await prisma.user.create({
       data: {
         name,

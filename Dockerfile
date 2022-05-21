@@ -13,8 +13,9 @@ ENV PRISMA_QUERY_ENGINE_BINARY=/usr/src/app/node_modules/prisma/node_modules/@pr
 
 COPY package.json .
 COPY prisma ./prisma/
+COPY node_modules .
 
-# RUN prisma generate
+# RUN npx prisma version
 
 RUN yarn
 

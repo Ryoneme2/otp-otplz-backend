@@ -6,6 +6,6 @@ export const schema = {
   username: { type: "string" },
   password: { type: "string" },
   },
-  required: ["uid", "name", "email", "username", "password"],
+  required: ["name", "email", "username", "password"],
   additionalProperties: false,
 }
