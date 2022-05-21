@@ -7,7 +7,7 @@ export const generateTokenService = async (userId: number) => {
   try {
     const token = createString();
 
-    await prisma.user.update({
+    const res = await prisma.user.update({
       where: {
         id: userId,
       },

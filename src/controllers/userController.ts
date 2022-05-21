@@ -171,7 +171,7 @@ export const login = async (req: Request, res: Response) => {
     return
   }
 
-  const secret = process.env.SECRET_KEY
+  const secret = process.env.SECRET_KEY || "x##A7Nzam1LoIWP90Ubp8c50gi&v7@N8@HcT9TwWXiWfi"
 
 
   if(!secret) {
@@ -182,6 +182,8 @@ export const login = async (req: Request, res: Response) => {
     });
     return
   }
+
+  
 
   const token = jwt.sign({
     id: result.data.id,

@@ -4,7 +4,7 @@ import { generateToken } from '../controllers/utilController'
 
 const router = express.Router();
 
-router.use("/getUserInfo/:id",auth, generateToken);
+router.get("/generate_key",auth, generateToken);
 
 
 export default router;

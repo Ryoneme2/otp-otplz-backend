@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client'
+import { JwtPayload } from 'jsonwebtoken'
 import dotenv from 'dotenv'
 dotenv.config()
 

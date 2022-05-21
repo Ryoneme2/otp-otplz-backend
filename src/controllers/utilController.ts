@@ -2,61 +2,71 @@ import { Response } from "express";
 import { IGetUserAuthInfoRequest, UserJwtPayload } from '../templates/@types'
 import { getUserByUsername } from "../services/userService/getUser";
 import { httpStatus } from "../configs/httpStatus";
-import { generateTokenService } from "services/tokenService/generateToken";
+import { generateTokenService } from "../services/tokenService/generateToken";
 import dotenv from 'dotenv'
 dotenv.config()
 
 export const generateToken = async (req: IGetUserAuthInfoRequest, res: Response) => {
   if(!req.user) {
-    return {
+    res.send({
       status : httpStatus.forbidden,
       data : null,
       message : 'Access denied.'
-    }
+    })
+    return
   }
 
-  const userObjJWT : UserJwtPayload = JSON.parse(req.user.toString())
+  const userObjJWT = req.user as UserJwtPayload;
+
+  console.log({ userObjJWT });
 
   const userData = await getUserByUsername(userObjJWT.username)
 
+  console.log({ userData });
+
   if(!userData.isSuccess) {
-    return {
+    res.send({
       status : httpStatus.InternalServerError,
       data : null,
       message : userData.message
-    }
+    })
+    return
   }
 
   if(userData.data?.apiKey) {
-    return {
+    res.send({
       status : httpStatus.badRequest,
       data : null,
       message : 'apiKey has been created'
-    }
+    })
+    return
   }
-  if(!userData.data?.id ) {
-    return {
+  if(!userData.data?.id) {
+    res.send({
       status : httpStatus.badRequest,
       data : null,
       message : 'UserId is undefined'
-    }
+    })
+    return
   }
 
   const response = await generateTokenService(userData.data?.id)
 
+  console.log({ response });
+  
   if(!response.isSuccess) {
-    return {
+    res.send({
       status : httpStatus.InternalServerError,
       data : null,
       message : response.message
-    }
+    })
   }
 
-  return {
-    status : httpStatus.ok,
+  res.send({
+    status : httpStatus.created,
     data : null,
     message : response.message
-  }
+  })
 
 }
 

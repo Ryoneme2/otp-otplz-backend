@@ -4,6 +4,7 @@ import cors from "cors";
 dotenv.config();
 
 import authRoute from './routes/authRoute'
+import utilRoute from './routes/utilRoute'
 
 const app: Application = express();
 const PORT = process.env.PORTEXPRESS || 8080;
@@ -31,6 +32,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use('/auth', authRoute); // login and register
+app.use('/utils', utilRoute); // login and register
 
 
 app.listen(PORT, () => {

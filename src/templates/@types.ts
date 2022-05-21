@@ -22,7 +22,7 @@ export interface UserInterface {
   createdAt?: Date;
 }
 
-export interface UserJwtPayload {
+export interface UserJwtPayload extends JwtPayload {
   id: number;
   email: string;
   username: string;
