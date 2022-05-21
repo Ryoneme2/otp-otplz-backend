@@ -70,4 +70,17 @@ export const generateToken = async (req: IGetUserAuthInfoRequest, res: Response)
 
 }
 
-//revoke token , refresh token 
+export const revokeToken = (req : IGetUserAuthInfoRequest, res : Response) => {
+  if(!req.user) {
+    res.send({
+      status : httpStatus.forbidden,
+      data : null,
+      message : 'Access denied.'
+    })
+    return
+  }
+
+  const userObjJWT = req.user as UserJwtPayload;
+
+  const userData = await getUserByUsername(userObjJWT.username)
+}
