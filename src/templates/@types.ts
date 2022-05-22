@@ -28,6 +28,13 @@ export interface UserJwtPayload extends JwtPayload {
   username: string;
 }
 
+export interface ApiKeyJwtPayload extends JwtPayload {
+  apiKey: string;
+  apiKeyCreateTime: Date;
+  id: number;
+  planTier: number,
+}
+
 export interface IGetUserAuthInfoRequest extends Request {
   user?: string | JwtPayload
 }

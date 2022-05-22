@@ -52,7 +52,7 @@ export const generateToken = async (req: IGetUserAuthInfoRequest, res: Response)
     return
   }
 
-  const response = await generateTokenService(userData.data?.id)
+  const response = await generateTokenService(userData.data?.id, userData.data?.planTier)
 
   console.log({ response });
   

@@ -15,6 +15,7 @@ export const getUser = async (id: number | string) => {
         id: id
       }
     })
+
     if (!!allUsers) {
       return {
         isSuccess: true,
@@ -24,6 +25,7 @@ export const getUser = async (id: number | string) => {
           email: allUsers.email,
           username: allUsers.username,
           role: allUsers.role,
+          planTier: allUsers.planTier,
           createdAt: allUsers.createdAt,
         },
         message: 'User has been found'
@@ -96,9 +98,9 @@ export const getUserByUsername = async (username: string) => {
           name: allUsers.name,
           email: allUsers.email,
           username: allUsers.username,
-          password: allUsers.password,
           apiKey: allUsers.apiKey,
           apiKeyCreateTime: allUsers.apiKeyCreateTime,
+          planTier: allUsers.planTier,
           role: allUsers.role,
           createdAt: allUsers.createdAt,
         },

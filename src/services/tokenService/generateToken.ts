@@ -1,18 +1,28 @@
+import { getUser } from './../userService/getUser';
 import createString from "../../utils/generateUniqueStr";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export const generateTokenService = async (userId: number) => {
+export const generateTokenService = async (userId: number, planTier: number) => {
   try {
     const token = createString();
+
+    const resUser = getUser(userId);
+
+    const tokenJwt = jwt.sign({
+      apiKey: token,
+      apiKeyCreateTime: new Date(),
+      id: userId,
+      planTier: planTier,
+    }, "x##A7Nzam1LoIWP90Ubp8c50gi&v7@N8@HcT9TwWXiWfi")
 
     const res = await prisma.user.update({
       where: {
         id: userId,
       },
       data: {
-        apiKey: token,
+        apiKey: tokenJwt,
         apiKeyCreateTime: new Date(),
       }
     })

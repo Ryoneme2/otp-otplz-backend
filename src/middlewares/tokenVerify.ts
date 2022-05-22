@@ -4,7 +4,9 @@ import { IGetUserAuthInfoRequest } from '../templates/@types'
 import dotenv from 'dotenv'
 dotenv.config()
 
-export const auth = (req:IGetUserAuthInfoRequest, res:Response, next:NextFunction) => {
+import { checkIsExistToken, compareToken } from '../services/tokenService/checkIsExistToken'
+
+export const tokenVerify = (req:IGetUserAuthInfoRequest, res:Response, next:NextFunction) => {
   try {
     if(!process.env.JWT_SECRET) {
       throw new Error('JWT_SECRET is not defined');
@@ -21,10 +23,14 @@ export const auth = (req:IGetUserAuthInfoRequest, res:Response, next:NextFunctio
     console.log(process.env.JWT_SECRET);
     
     const decoded  = jwt.verify(token, process.env.JWT_SECRET);
-    // console.log({ decoded });
-    // collect user info
-    req.user = decoded;
     
+    if(!checkIsExistToken(decoded.id)) {
+      return res.status(403).send({
+        isLogin : false,
+        errMsg : 'token is not exist'
+      });
+    }
+
     next();
 } catch (error) {
     res.status(400).send("Invalid token");
