@@ -37,7 +37,7 @@ export const checkIsExistToken = async (userId: number) => {
 
 export const compareToken = async (userId: number, token : string) => {
   try {
-    
+    //TODO : unwrap payload from jwt token and compare with userId
     const user = await getUser(userId);
 
     if(!user.isSuccess) {
